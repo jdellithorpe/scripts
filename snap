@@ -1,0 +1,17 @@
+#!/bin/bash
+
+: "${NOTES_HOME:?Please set NOTES_HOME to your notes directory.}"
+
+if [ -d ${1} ]; then 
+  dirSha1Sum=$(find ${1} -type f -exec sha1sum {} \; | cut -d' ' -f1 | sha1sum | cut -d' ' -f1)
+  destDir=$NOTES_HOME/.snaps/${dirSha1Sum}
+  if [ -d ${destDir} ]; then
+    rm -rf ${destDir}
+  fi
+  cp -r ${1} ${destDir}
+  echo -n [`basename ${1}`]\(.snaps/${dirSha1Sum}\)
+else
+  fileSha1Sum=$(sha1sum ${1} | cut -d' ' -f1)
+  cp ${1} $NOTES_HOME/.snaps/${fileSha1Sum}
+  echo -n [`basename ${1}`]\(.snaps/${fileSha1Sum}\)
+fi
