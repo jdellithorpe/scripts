@@ -32,6 +32,8 @@ def print_stats(filename):
 
     numbers.sort()
 
+    print("%12s: %12.3f" % ("Count", len(numbers)))
+    print("%12s: %12.3f" % ("Sum", np.sum(numbers)))
     print("%12s: %12.3f" % ("Min", np.min(numbers)))
     print("%12s: %12.3f" % ("Max", np.max(numbers)))
     print("%12s: %12.3f" % ("Mean", np.mean(numbers)))
