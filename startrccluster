@@ -1,0 +1,8 @@
+#!/bin/bash
+if [ "$(pwd)" != "${RAMCLOUD_HOME}" ]
+then
+  echo "ERROR: Must be in ${RAMCLOUD_HOME}"
+  exit
+fi
+
+./scripts/cluster.py -s $1 -r $2 --transport=basic+dpdk --dpdkPort 1 --superuser --masterArgs="--totalMasterMemory 50000 --segmentFrames 20000" --verbose < /dev/stdin
