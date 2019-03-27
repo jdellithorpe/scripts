@@ -1,2 +1,2 @@
 #!/bin/bash
-echo basic+udp:host=$(ssh rc16 "hostname -i"),port=12246
+echo basic+udp:host=$(ssh $1 "hostname -i"),port=12246
