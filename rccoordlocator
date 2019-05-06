@@ -1,0 +1,2 @@
+#!/bin/bash
+echo $(head -n1 ~/RAMCloud/logs/latest/coordinator.*.log | awk '{print $10}')
