@@ -1,0 +1,2 @@
+#!/bin/bash
+ssh rcmaster "for i in {$1..$2}; do echo \$(ssh rc\${i}-ctrl hostname -i); done" | awk 'BEGIN{str=""} {str=str$1","} END{sub(/,$/,"",str); print str}'
